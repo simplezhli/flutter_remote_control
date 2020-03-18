@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_remote_control/res/colors.dart';
 import 'package:flutter_remote_control/models/draggable_info_model.dart';
 import 'package:flutter_remote_control/models/draggable_type.dart';
+import 'package:flutter_remote_control/widgets/my_drag_target.dart';
 import 'package:vibrate/vibrate.dart';
 
 /// 四种类型拖动按钮
@@ -76,10 +77,11 @@ class _DraggableButtonState extends State<DraggableButton> {
     return Center(
       child: GestureDetector(
         /// 长按触发拖动
-        child: LongPressDraggable<DraggableInfo>(
+        child: MyLongPressDraggable<DraggableInfo>(
           key: Key(widget.data.id),
           data: widget.data,
-          /// 最多同时拖动一个
+          dragAnchor: MyDragAnchor.center,
+          /// 最多拖动一个
           maxSimultaneousDrags: 1,
           /// 拖动控件时的样式，这里添加一个透明度
           feedback: Opacity(
@@ -90,6 +92,10 @@ class _DraggableButtonState extends State<DraggableButton> {
           onDragStarted: () {
             /// 开始拖动, 给予振动反馈
             Vibrate.feedback(FeedbackType.light);
+          },
+          /// 拖动中实时位置回调
+          onDrag: (offset) {
+            widget.data.setOffset(offset.dx, offset.dy);
           },
         ),
         onTapDown: (_) {

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_remote_control/widgets/my_drag_target.dart';
 import 'package:flutter_remote_control/widgets/remote_control.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_remote_control/res/colors.dart';
@@ -54,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: MyDragTarget()
+            child: RemoteControl()
           ),
           Divider(
             height: 1.0,

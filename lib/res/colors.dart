@@ -7,5 +7,6 @@ class Colours {
   static const Color pressed = Color(0x20000000);
   static const Color solid_line = Color(0x30FFFFFF);
   static const Color dashed_line = Color(0x20FFFFFF);
+  static const Color content = Color(0x0E000000);
 }
 

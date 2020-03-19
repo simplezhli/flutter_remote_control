@@ -22,4 +22,8 @@ class DraggableInfo {
     return '$runtimeType(id: $id, text: $text, img: $img, type: $type, dx: $dx, dy: $dy)';
   }
 
+  @override
+  // ignore: hash_and_equals  以id作为唯一标识
+  bool operator == (other) => other is DraggableInfo && id == other.id;
+
 }

@@ -5,13 +5,13 @@ import 'package:flutter_remote_control/models/draggable_info_model.dart';
 import 'package:flutter_remote_control/models/draggable_type.dart';
 import 'package:flutter_remote_control/widgets/my_button.dart';
 import 'package:flutter_remote_control/widgets/my_drag_target.dart';
-import 'package:vibrate/vibrate.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 /// 四种类型拖动按钮
 /// 1 * 1 图片 长宽为 48
 /// 1 * 1 文字 长宽为 48
 /// 3 * 3 图片 长宽依据屏幕宽度动态计算
-/// 1 * 2 图片 宽为 48，宽 115
+/// 1 * 2 图片 宽为 48，高 48.0 * 2.4
 /// 
 /// 默认按钮透明，按下为半透明。
 /// 长按触发拖动，并给予振动反馈。
@@ -25,7 +25,7 @@ class DraggableButton extends StatefulWidget {
     this.width1: 48.0,
     this.height1: 48.0,
     this.width2: 48.0,
-    this.height2: 48.0 * 2.39,
+    this.height2: 48.0 * 2.4,
     this.width3,
     this.height3,
     this.fontSize: 12.0,
@@ -82,7 +82,6 @@ class _DraggableButtonState extends State<DraggableButton> {
       child: GestureDetector(
         /// 长按触发拖动
         child: MyLongPressDraggable<DraggableInfo>(
-          key: Key(widget.data.id),
           data: widget.data,
           dragAnchor: MyDragAnchor.center,
           /// 最多拖动一个
@@ -105,15 +104,6 @@ class _DraggableButtonState extends State<DraggableButton> {
             /// 返回点为拖动目标左上角位置（相对于全屏）
             /// 这里根据目标大小，将位置调整为目标中心点，便于后面计算。
             widget.data.setOffset(offset.dx + button.getWidth(widget.data.type) / 2, offset.dy + button.getHeight(widget.data.type) / 2);
-          },
-          onDragEnd: (_) {
-            print('onDragEnd');
-          },
-          onDraggableCanceled: (_, __) {
-            print('onDraggableCanceled');
-          },
-          onDragCompleted: () {
-            print('onDragCompleted');
           },
         ),
         onTapDown: (_) {

@@ -6,16 +6,16 @@ import 'package:flutter_remote_control/models/draggable_type.dart';
 import 'package:flutter_remote_control/widgets/draggable_button.dart';
 import 'package:flutter_remote_control/widgets/my_button.dart';
 
+/// 遥控操作面板
 class PanelView extends StatefulWidget {
 
   const PanelView({
     Key key,
-    @required this.shadowData,
+    @required this.dropShadowData,
     @required this.gridSize,
   }): super(key: key);
-
   
-  final List<DraggableInfo> shadowData;
+  final List<DraggableInfo> dropShadowData;
   final double gridSize;
 
   @override
@@ -27,7 +27,7 @@ class PanelViewState extends State<PanelView> {
   final List<DraggableInfo> data = List();
 
   addData(DraggableInfo info) {
-    /// 避免重复添加
+    /// 避免重复添加同一按钮
     if (!data.contains(info)) {
       data.add(info);
     }
@@ -39,7 +39,7 @@ class PanelViewState extends State<PanelView> {
   
   @override
   Widget build(BuildContext context) {
-    if (widget.shadowData.isEmpty && data.isEmpty) {
+    if (widget.dropShadowData.isEmpty && data.isEmpty) {
       return Center(
         child: Text(
           '长按并拖拽下方按钮到这里',
@@ -49,6 +49,13 @@ class PanelViewState extends State<PanelView> {
     }
     /// 保存放置按钮的Rect
     List<Rect> rectList = List();
+
+    /// 移除与投影相同的数据，避免投影与放置按钮重复显示
+    widget.dropShadowData.forEach((dropShadow) {
+      if (data.contains(dropShadow)) {
+        removeData(dropShadow);
+      }
+    });
     /// 放置的按钮
     List<Widget> children = List.generate(data.length, (index) {
       Rect rect = compute(context,data[index]);
@@ -63,13 +70,15 @@ class PanelViewState extends State<PanelView> {
 
       if (overlap) {
         /// 重叠数据移除
-        data.remove(data[index]);
+        removeData(data[index]);
         return const SizedBox.shrink();
       }
       
       return Positioned.fromRect(
         rect: rect,
         child: Center(
+          /// 涉及widget移动、删除，注意添加key  https://weilu.blog.csdn.net/article/details/104745624
+          key: ObjectKey(data[index]),
           child: DraggableButton(
             data: data[index],
             fontSize: 13.0,
@@ -80,17 +89,18 @@ class PanelViewState extends State<PanelView> {
             width3: widget.gridSize * 2.5,
             height3: widget.gridSize * 2.5,
             onDragStarted: () {
-              //data.remove(data[index]);
+              /// 开始拖动时，移除面板上的拖动按钮
+              removeData(data[index]);
             },
           ),
         ),
       );
     });
 
-    /// 引导指示按钮
-    List<Widget> children1 = List.generate(widget.shadowData.length, (index) {
-      Rect rect = compute(context, widget.shadowData[index]);
-      rect = adjust(widget.shadowData[index], rect);
+    /// 引导指示按钮（投影）
+    List<Widget> children1 = List.generate(widget.dropShadowData.length, (index) {
+      Rect rect = compute(context, widget.dropShadowData[index]);
+      rect = adjust(widget.dropShadowData[index], rect);
 
       bool overlap = isOverlap(rect, rectList);
       
@@ -99,7 +109,7 @@ class PanelViewState extends State<PanelView> {
       }
       
       var button = MyButton(
-          data: widget.shadowData[index],
+          data: widget.dropShadowData[index],
           fontSize: 13.0,
           width1: widget.gridSize - 18, // padding 9
           height1: widget.gridSize - 18,

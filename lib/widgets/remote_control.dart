@@ -47,6 +47,7 @@ class _RemoteControlState extends State<RemoteControl> {
       key: _key,
       fit: StackFit.expand,
       children: <Widget>[
+        /// RepaintBoundary： https://weilu.blog.csdn.net/article/details/103452637
         RepaintBoundary(
           child: CustomPaint(
             /// 绘制手机外形
@@ -59,25 +60,28 @@ class _RemoteControlState extends State<RemoteControl> {
           child: MyDragTarget<DraggableInfo>(
             builder: (context, candidateData, rejectedData) {
               return PanelView(
+                /// key： https://weilu.blog.csdn.net/article/details/104745624
                 key: _panelGlobalKey,
                 gridSize: offset.dx / 4,
-                shadowData: candidateData,
+                dropShadowData: candidateData,
               );
             },
             onAccept: (data) {
-              print('onAccept');
+              /// 目标被区域接收
               _panelGlobalKey.currentState.addData(data);
             },
             onLeave: (data) {
+              /// 目标移出区域
               _panelGlobalKey.currentState.removeData(data);
             },
             onDrag: (data) {
+              /// 监测到有目标在拖动，绘制指示投影。
               setState(() {
 
               });
             },
             onWillAccept: (data) {
-              print(data.toString());
+              /// 判断目标是否可以被接收
               return data != null;
             },
           ),

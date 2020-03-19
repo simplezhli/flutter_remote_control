@@ -24,9 +24,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
-  # 振动
-  vibrate: 0.0.4
-  # 绘制虚线
+  # 振动 https://github.com/rodydavis/flutter_vibrate
+  flutter_vibrate: 1.0.0
+  # 绘制虚线 https://github.com/dnfield/flutter_path_drawing
   path_drawing: ^0.4.1
 
 dev_dependencies:

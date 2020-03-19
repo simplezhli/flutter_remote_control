@@ -1,8 +1,16 @@
 # flutter_remote_control
 
-使用`LongPressDraggable`与`DragTarget`实现的万能遥控器交互效果。
+主要使用`LongPressDraggable`与`DragTarget`实现的万能遥控器交互效果。
 
 Android 原生实现版本：[RemoteControlView](https://github.com/simplezhli/RemoteControlView)
+
+## 实现效果
+
+<img src="preview/preview.gif" width="540px"/>
+
+## 实现过程
+
+后面会整理一篇博客来详细介绍实现细节。
 
 ## License
 

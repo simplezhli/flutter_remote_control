@@ -88,6 +88,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_vibrate:
+    dependency: "direct main"
+    description:
+      name: flutter_vibrate
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   image:
     dependency: transitive
     description:
@@ -219,13 +226,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.8"
-  vibrate:
-    dependency: "direct main"
-    description:
-      name: vibrate
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.4"
   xml:
     dependency: transitive
     description:

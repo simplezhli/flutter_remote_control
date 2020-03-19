@@ -5,6 +5,7 @@ import 'package:flutter_remote_control/models/draggable_type.dart';
 import '../models/draggable_info_model.dart';
 import 'draggable_button.dart';
 
+/// 底部按钮菜单
 class DraggableButtonMenu extends StatefulWidget {
   
   const DraggableButtonMenu({
@@ -69,8 +70,8 @@ class _DraggableButtonMenuState extends State<DraggableButtonMenu> {
     return widget.index == 1 ? menu : GridView.builder(
         itemCount: _list.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
-            childAspectRatio: 1
+          crossAxisCount: 5,
+          childAspectRatio: 1
         ),
         itemBuilder: (_, index) {
           return DraggableButton(data: _list[index]);

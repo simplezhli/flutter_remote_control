@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_remote_control/models/draggable_info_model.dart';
 import 'package:flutter_remote_control/models/draggable_type.dart';
 
+/// 根据类型、宽高，返回对应Widget
 class MyButton extends StatelessWidget {
 
   const MyButton({

@@ -138,7 +138,7 @@ class PhoneView extends CustomPainter {
     _mPhonePaint.color = Colours.solid_line;
     canvas.drawPath(_solidPath, _mPhonePaint);
     
-    _mPhonePaint.color = Colours.dashed_line;
+    _mPhonePaint.color = Colours.dash_line;
     canvas.drawPath(dashPath(
       _dashPath,
       dashArray: CircularIntervalList<double>(<double>[4, 4]),

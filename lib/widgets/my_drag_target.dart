@@ -420,9 +420,9 @@ class _DraggableState<T> extends State<MyDraggable<T>> {
         if (!wasAccepted && widget.onDraggableCanceled != null)
           widget.onDraggableCanceled(velocity, offset);
       },
-      /// TODO 修改处  
+      /// TODO 修改处  这里没有添加 mounted 条件判断，为了二次拖动。
       onDrag: (Offset offset) {
-        if (mounted && widget.onDrag != null) {
+        if (widget.onDrag != null) {
           widget.onDrag(offset);
         }
       }

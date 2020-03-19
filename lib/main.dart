@@ -50,38 +50,40 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 2.0,
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: RemoteControl()
-          ),
-          Divider(
-            height: 1.0,
-            color: Colours.line,
-          ),
-          SizedBox(
-            // 底部菜单高度为屏幕宽度的五分之二加底部指示器高度20。
-            height: MediaQuery.of(context).size.width / 5 * 2 + 20,
-            child: Swiper(
-              containerWidth: double.infinity,
-              itemCount: 4,
-              curve: Curves.linear,
-              loop: false,
-              pagination: const SwiperPagination(
-                builder: DotSwiperPaginationBuilder(
-                  activeColor: Colors.white,
-                  color: Colours.line,
-                  size: 6.0,
-                  activeSize: 6.0,
-                  space: 2.0
-                )
-              ),
-              itemBuilder: (_, index) {
-                return DraggableButtonMenu(index: index,);
-              },
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: RemoteControl()
             ),
-          )
-        ],
+            Divider(
+              height: 1.0,
+              color: Colours.line,
+            ),
+            SizedBox(
+              // 底部菜单高度为屏幕宽度的五分之二加底部指示器高度20。
+              height: MediaQuery.of(context).size.width / 5 * 2 + 20,
+              child: Swiper(
+                containerWidth: double.infinity,
+                itemCount: 4,
+                curve: Curves.linear,
+                loop: false,
+                pagination: const SwiperPagination(
+                  builder: DotSwiperPaginationBuilder(
+                    activeColor: Colors.white,
+                    color: Colours.line,
+                    size: 6.0,
+                    activeSize: 6.0,
+                    space: 2.0
+                  )
+                ),
+                itemBuilder: (_, index) {
+                  return DraggableButtonMenu(index: index,);
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

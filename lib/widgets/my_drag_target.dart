@@ -655,7 +655,6 @@ class _DragAvatar<T> extends Drag {
     finishDrag(_DragEndKind.dropped, _restrictVelocityAxis(details.velocity));
   }
 
-
   @override
   void cancel() {
     finishDrag(_DragEndKind.canceled);
@@ -685,8 +684,9 @@ class _DragAvatar<T> extends Drag {
     }
 
     /// TODO 修改处 返回拖动中位置
-    if (onDrag != null)
+    if (onDrag != null) {
       onDrag(_lastOffset);
+    }
 
     // If everything's the same, bail early.
     if (listsMatch)

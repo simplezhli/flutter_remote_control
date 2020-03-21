@@ -678,9 +678,9 @@ class _DragAvatar<T> extends Drag {
           listsMatch = false;
           break;
         }
+        /// TODO 修改处
+        _enteredTargets[i].didDrag(this);
       }
-      /// TODO 修改处
-      targets[0].didDrag(this);
     }
 
     /// TODO 修改处 返回拖动中位置

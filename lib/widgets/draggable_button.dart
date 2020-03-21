@@ -23,22 +23,16 @@ class DraggableButton extends StatefulWidget {
     @required this.data,
     this.onDragStarted,
     this.width1: 48.0,
-    this.height1: 48.0,
     this.width2: 48.0,
-    this.height2: 48.0 * 2.4,
     this.width3,
-    this.height3,
     this.fontSize: 12.0,
   }): super(key: key);
 
   final DraggableInfo data;
   final Function onDragStarted;
   final double width1;
-  final double height1;
   final double width2;
-  final double height2;
   final double width3;
-  final double height3;
   final double fontSize;
   
   @override
@@ -59,11 +53,8 @@ class _DraggableButtonState extends State<DraggableButton> {
       data: widget.data,
       fontSize: widget.fontSize,
       width1: widget.width1,
-      height1: widget.height1,
       width2: widget.width2,
-      height2: widget.height2,
       width3: widget.width3 ?? size,
-      height3: widget.height3 ?? size
     );
 
     var child = Container(

@@ -10,21 +10,15 @@ class MyButton extends StatelessWidget {
     Key key,
     @required this.data,
     this.width1,
-    this.height1,
     this.width2,
-    this.height2,
     this.width3,
-    this.height3,
     this.fontSize,
   }): super(key: key);
 
   final DraggableInfo data;
   final double width1;
-  final double height1;
   final double width2;
-  final double height2;
   final double width3;
-  final double height3;
   final double fontSize;
   
   @override
@@ -40,11 +34,11 @@ class MyButton extends StatelessWidget {
         ),
       );
     } else if (data.type == DraggableType.imageOneToOne) {
-      child = Image.asset(data.img, width: width1 / 2, height: height1 / 2,);
+      child = Image.asset(data.img, width: width1 / 2, height: width1 / 2,);
     } else if (data.type == DraggableType.imageOneToTwo) {
-      child = Image.asset(data.img, width: width2, height: height2,);
+      child = Image.asset(data.img, width: width2, height: width2 * 2.4,);
     } else if (data.type == DraggableType.imageThreeToThree) {
-      child = Image.asset(data.img, width: width3, height: height3,);
+      child = Image.asset(data.img, width: width3, height: width3,);
     }
     return child;
   }
@@ -66,13 +60,13 @@ class MyButton extends StatelessWidget {
   double getHeight(DraggableType type) {
     double height;
     if (type == DraggableType.text || data.type == DraggableType.imageOneToOne) {
-      height = height1;
+      height = width1;
     }
     if (type == DraggableType.imageOneToTwo) {
-      height = height2;
+      height = width2 * 2.4;
     }
     if (type == DraggableType.imageThreeToThree) {
-      height = height3;
+      height = width3;
     }
     return height;
   }

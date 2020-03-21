@@ -58,7 +58,10 @@ class PanelViewState extends State<PanelView> {
     });
     /// 放置的按钮
     List<Widget> children = List.generate(data.length, (index) {
-      Rect rect = compute(context,data[index]);
+      if (index > data.length - 1) {
+        return const SizedBox.shrink();
+      }
+      Rect rect = compute(context, data[index]);
       rect = adjust(data[index], rect);
       rectList.add(rect);
 
@@ -83,11 +86,8 @@ class PanelViewState extends State<PanelView> {
             data: data[index],
             fontSize: 13.0,
             width1: widget.gridSize - 18,
-            height1: widget.gridSize - 18,
             width2: widget.gridSize - 18,
-            height2: (widget.gridSize - 18) * 2.4,
             width3: widget.gridSize * 2.5,
-            height3: widget.gridSize * 2.5,
             onDragStarted: () {
               /// 开始拖动时，移除面板上的拖动按钮
               removeData(data[index]);
@@ -112,11 +112,8 @@ class PanelViewState extends State<PanelView> {
           data: widget.dropShadowData[index],
           fontSize: 13.0,
           width1: widget.gridSize - 18, // padding 9
-          height1: widget.gridSize - 18,
           width2: widget.gridSize - 18, // padding 9
-          height2: (widget.gridSize - 18) * 2.4,
           width3: widget.gridSize * 2.5, // padding gridSize * 0.25
-          height3: widget.gridSize * 2.5
       );
 
       return Positioned.fromRect(
@@ -204,7 +201,7 @@ class PanelViewState extends State<PanelView> {
     return Rect.fromLTRB(left, top, right, bottom);
   }
 
-  /// 判断指示View是否有重叠
+  /// 是否有重叠
   bool isOverlap(Rect rect, List<Rect> mRectList) {
     for (int i = 0; i < mRectList.length; i++) {
       if (isRectOverlap(mRectList[i], rect)) {

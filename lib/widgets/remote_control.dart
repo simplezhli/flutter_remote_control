@@ -17,8 +17,6 @@ class _RemoteControlState extends State<RemoteControl> {
 
   Rect _rect = Rect.zero;
   GlobalKey _key = GlobalKey();
-  Offset offset = Offset.zero;
-
   GlobalKey<PanelViewState> _panelGlobalKey = GlobalKey();
 
   @override
@@ -28,7 +26,7 @@ class _RemoteControlState extends State<RemoteControl> {
       RenderBox hint = _key.currentContext.findRenderObject();
       double width = hint.size.width;
       double height = hint.size.height;
-      offset = Utils.getPhoneSize(height);
+      Offset offset = Utils.getPhoneSize(height);
       
       _rect = Rect.fromCenter(
           center: Offset(width / 2, height / 2),
@@ -58,11 +56,11 @@ class _RemoteControlState extends State<RemoteControl> {
           rect: _rect,
           /// 接收拖动目标区域
           child: MyDragTarget<DraggableInfo>(
-            builder: (context, candidateData, rejectedData) {
+            builder: (_, candidateData, __) {
               return PanelView(
                 /// key： https://weilu.blog.csdn.net/article/details/104745624
                 key: _panelGlobalKey,
-                gridSize: offset.dx / 4,
+                gridSize: _rect.width / 4,
                 dropShadowData: candidateData,
               );
             },

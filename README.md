@@ -6,7 +6,9 @@ Android 原生实现版本：[RemoteControlView](https://github.com/simplezhli/R
 
 ## 实现效果
 
-<img src="preview/preview.gif" width="540px"/>
+|  |  |
+| :---------------------------: | :-----------------------------: |
+| ![](./preview/preview.gif)    |  ![](./preview/preview1.gif)    |
 
 ## 实现过程
 

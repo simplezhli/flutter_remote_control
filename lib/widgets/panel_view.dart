@@ -58,11 +58,12 @@ class PanelViewState extends State<PanelView> {
     });
     /// 放置的按钮
     List<Widget> children = List.generate(data.length, (index) {
+      /// 避免外界对data的增删，导致下标越界
       if (index > data.length - 1) {
         return const SizedBox.shrink();
       }
-      Rect rect = compute(context, data[index]);
-      rect = adjust(data[index], rect);
+      Rect rect = computeSize(context, data[index]);
+      rect = adjustPosition(data[index], rect);
       rectList.add(rect);
 
       /// 去除自身判断重叠
@@ -99,8 +100,8 @@ class PanelViewState extends State<PanelView> {
 
     /// 引导指示按钮（投影）
     List<Widget> children1 = List.generate(widget.dropShadowData.length, (index) {
-      Rect rect = compute(context, widget.dropShadowData[index]);
-      rect = adjust(widget.dropShadowData[index], rect);
+      Rect rect = computeSize(context, widget.dropShadowData[index]);
+      rect = adjustPosition(widget.dropShadowData[index], rect);
 
       bool overlap = isOverlap(rect, rectList);
       
@@ -131,8 +132,8 @@ class PanelViewState extends State<PanelView> {
     );
   }
 
-  /// 计算拖动目标位置
-  Rect compute(BuildContext context, DraggableInfo info) {
+  /// 计算拖动目标大小及位置
+  Rect computeSize(BuildContext context, DraggableInfo info) {
     double width = widget.gridSize;
     double height = widget.gridSize;
     if (info.type == DraggableType.imageOneToTwo) {
@@ -154,7 +155,7 @@ class PanelViewState extends State<PanelView> {
   }
 
   /// 调整拖动目标位置（处于田字格中）
-  Rect adjust(DraggableInfo info, Rect mRect) {
+  Rect adjustPosition(DraggableInfo info, Rect mRect) {
     // 最小单元格宽高
     double size = widget.gridSize / 2;
 

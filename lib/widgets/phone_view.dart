@@ -34,7 +34,7 @@ class PhoneView extends CustomPainter {
     // 手机屏幕间距5
     double phoneGap = 5;
    
-    Offset offset = Utils.getPhoneSize(size.height);
+    Offset offset = Utils.getPhoneContentSize(size.height);
     double mPhoneContentHeight = offset.dy;
     double mPhoneContentWidth = offset.dx;
     double mPhoneWidth = mPhoneContentWidth + phoneGap * 2;

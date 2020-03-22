@@ -26,7 +26,7 @@ class _RemoteControlState extends State<RemoteControl> {
       RenderBox hint = _key.currentContext.findRenderObject();
       double width = hint.size.width;
       double height = hint.size.height;
-      Offset offset = Utils.getPhoneSize(height);
+      Offset offset = Utils.getPhoneContentSize(height);
       
       _rect = Rect.fromCenter(
           center: Offset(width / 2, height / 2),

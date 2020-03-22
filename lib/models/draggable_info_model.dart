@@ -23,7 +23,8 @@ class DraggableInfo {
   }
 
   @override
-  // ignore: hash_and_equals  以id作为唯一标识
+  /// 以id作为唯一标识
+  // ignore: hash_and_equals
   bool operator == (other) => other is DraggableInfo && id == other.id;
 
 }

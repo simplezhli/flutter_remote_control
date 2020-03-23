@@ -6,9 +6,11 @@ Android 原生实现版本：[RemoteControlView](https://github.com/simplezhli/R
 
 ## 实现效果
 
-|  |  |
+| 单指 | 多指 |
 | :---------------------------: | :-----------------------------: |
-| ![](./preview/preview.gif)    |  ![](./preview/preview1.gif)    |
+| ![Preview](./preview/preview.gif)    |  ![Preview1](./preview/preview1.gif)    |
+
+Android版安装包：[点击下载](https://www.pgyer.com/F65D)，安装密码：`111111`。
 
 ## 实现过程
 

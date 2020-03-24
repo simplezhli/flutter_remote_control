@@ -33,10 +33,10 @@ class PhoneView extends CustomPainter {
     double gap = 12;
     // 手机屏幕间距5
     double phoneGap = 5;
-   
-    Offset offset = Utils.getPhoneContentSize(size.height);
-    double mPhoneContentHeight = offset.dy;
-    double mPhoneContentWidth = offset.dx;
+
+    Size _size = Utils.getPhoneContentSize(size.height);
+    double mPhoneContentHeight = _size.height;
+    double mPhoneContentWidth = _size.width;
     double mPhoneWidth = mPhoneContentWidth + phoneGap * 2;
     // 绘制起始点
     double startX = (size.width - mPhoneWidth) / 2;
@@ -92,10 +92,11 @@ class PhoneView extends CustomPainter {
     // 三角
     dx = size.width - startX - mPhoneWidth / 5;
     dy = size.height;
-    _path.moveTo(dx, dy - 30);
-    _path.lineTo(dx - 10, dy - 24);
-    _path.lineTo(dx, dy - 18);
-    _path.close();
+    
+    _path..moveTo(dx, dy - 30)
+      ..lineTo(dx - 10, dy - 24)
+      ..lineTo(dx, dy - 18)
+      ..close();
     canvas.drawPath(_path, _mPhonePaint);
     
     // 绘制网格（4 * 7的田字格）田字格外框为实线，内侧为虚线

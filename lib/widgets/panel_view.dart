@@ -49,7 +49,9 @@ class PanelViewState extends State<PanelView> {
     }
     /// 保存放置按钮的Rect
     List<Rect> rectList = List();
-
+    /// 临时存储Rect
+    List<Rect> copyList = List();
+    
     /// 移除与投影相同的数据，避免投影与放置按钮重复显示
     widget.dropShadowData.forEach((dropShadow) {
       if (data.contains(dropShadow)) {
@@ -67,7 +69,7 @@ class PanelViewState extends State<PanelView> {
       rectList.add(rect);
 
       /// 去除自身判断重叠
-      List<Rect> copyList = List();
+      copyList.clear();
       copyList.addAll(rectList);
       copyList.remove(rect);
       bool overlap = isOverlap(rect, copyList);

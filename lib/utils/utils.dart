@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Utils {
 
   /// 计算手机实际内容区域
-  static Offset getPhoneContentSize(double height) {
+  static Size getPhoneContentSize(double height) {
     // 上下间隔
     double gap = 12;
     // 手机屏幕间距5
@@ -15,7 +15,7 @@ class Utils {
     // 手机内容区域宽 ：手机内容区域高/ 7 * 4（手机内容区域为4：7）
     double mPhoneContentWidth = mPhoneContentHeight / 7 * 4;
 
-    return Offset(mPhoneContentWidth, mPhoneContentHeight);
+    return Size(mPhoneContentWidth, mPhoneContentHeight);
   }
 
 }

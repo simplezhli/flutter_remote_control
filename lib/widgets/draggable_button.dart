@@ -70,49 +70,56 @@ class _DraggableButtonState extends State<DraggableButton> {
     );
     
     return Center(
-      child: GestureDetector(
-        /// 长按触发拖动
-        child: MyLongPressDraggable<DraggableInfo>(
-          data: widget.data,
-          dragAnchor: MyDragAnchor.center,
-          /// 最多拖动一个
-          maxSimultaneousDrags: 1,
-          /// 拖动控件时的样式，这里添加一个透明度
-          feedback: Opacity(
-            opacity: 0.5,
+      /// Semantics: https://weilu.blog.csdn.net/article/details/103823259
+      child: Semantics(
+        label: widget.data.type == DraggableType.text ? '数字键${widget.data.text}' : widget.data.text,
+        onLongPressHint: '长按开始拖动',
+        onLongPress: () {},
+        button: false,
+        child: GestureDetector(
+          /// 长按触发拖动
+          child: MyLongPressDraggable<DraggableInfo>(
+            data: widget.data,
+            dragAnchor: MyDragAnchor.center,
+            /// 最多拖动一个
+            maxSimultaneousDrags: 1,
+            /// 拖动控件时的样式，这里添加一个透明度
+            feedback: Opacity(
+              opacity: 0.5,
+              child: child,
+            ),
             child: child,
+            onDragStarted: () {
+              /// 开始拖动, 给予振动反馈
+              Vibrate.feedback(FeedbackType.light);
+              if (widget.onDragStarted != null) {
+                widget.onDragStarted();
+              }
+            },
+            /// 拖动中实时位置回调
+            onDrag: (offset) {
+              /// 返回点为拖动目标左上角位置（相对于全屏）
+              /// 这里根据目标大小，将位置调整为目标中心点，便于后面计算。
+              widget.data.setOffset(offset.dx + button.getWidth(widget.data.type) / 2, offset.dy + button.getHeight(widget.data.type) / 2);
+            },
           ),
-          child: child,
-          onDragStarted: () {
-            /// 开始拖动, 给予振动反馈
-            Vibrate.feedback(FeedbackType.light);
-            if (widget.onDragStarted != null) {
-              widget.onDragStarted();
-            }
+          onTapDown: (_) {
+            /// 按下按钮背景变化
+            setState(() {
+              _color = Colours.pressed;
+            });
           },
-          /// 拖动中实时位置回调
-          onDrag: (offset) {
-            /// 返回点为拖动目标左上角位置（相对于全屏）
-            /// 这里根据目标大小，将位置调整为目标中心点，便于后面计算。
-            widget.data.setOffset(offset.dx + button.getWidth(widget.data.type) / 2, offset.dy + button.getHeight(widget.data.type) / 2);
+          onTapUp: (_) {
+            setState(() {
+              _color = Colors.transparent;
+            });
+          },
+          onTapCancel: () {
+            setState(() {
+              _color = Colors.transparent;
+            });
           },
         ),
-        onTapDown: (_) {
-          /// 按下按钮背景变化
-          setState(() {
-            _color = Colours.pressed;
-          });
-        },
-        onTapUp: (_) {
-          setState(() {
-            _color = Colors.transparent;
-          });
-        },
-        onTapCancel: () {
-          setState(() {
-            _color = Colors.transparent;
-          });
-        },
       ),
     );
   }

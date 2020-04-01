@@ -40,11 +40,14 @@ class PanelViewState extends State<PanelView> {
   @override
   Widget build(BuildContext context) {
     if (widget.dropShadowData.isEmpty && data.isEmpty) {
-      return Center(
-        child: Text(
-          '长按并拖拽下方按钮到这里',
-          style: TextStyle(fontSize: 12.0, color: Colors.white),
-        )
+      /// MergeSemantics: https://weilu.blog.csdn.net/article/details/103823259
+      return MergeSemantics(
+        child: Center(
+          child: Text(
+            '长按并拖拽下方按钮到这里',
+            style: TextStyle(fontSize: 12.0, color: Colors.white),
+          )
+        ),
       );
     }
     /// 保存放置按钮的Rect

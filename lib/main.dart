@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+//      showSemanticsDebugger: true,
       title: 'Flutter Remote Control',
       theme: ThemeData(
         primaryColor: Colours.app_main,

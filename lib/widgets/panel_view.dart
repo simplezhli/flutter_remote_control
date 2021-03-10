@@ -24,7 +24,7 @@ class PanelView extends StatefulWidget {
 
 class PanelViewState extends State<PanelView> {
 
-  final List<DraggableInfo> data = List();
+  final List<DraggableInfo> data = [];
 
   addData(DraggableInfo info) {
     /// 避免重复添加同一按钮
@@ -51,9 +51,9 @@ class PanelViewState extends State<PanelView> {
       );
     }
     /// 保存放置按钮的Rect
-    List<Rect> rectList = List();
+    List<Rect> rectList = [];
     /// 临时存储Rect
-    List<Rect> copyList = List();
+    List<Rect> copyList = [];
     
     /// 移除与投影相同的数据，避免投影与放置按钮重复显示
     widget.dropShadowData.forEach((dropShadow) {

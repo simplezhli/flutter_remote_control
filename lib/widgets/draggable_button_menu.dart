@@ -54,7 +54,7 @@ class _DraggableButtonMenuState extends State<DraggableButtonMenu> {
         return DraggableInfo(id, _text1[index], _img1[index], DraggableType.imageOneToOne);
       });
     } else if (widget.index == 1) {
-      _list = List();
+      _list = [];
       _list.add(DraggableInfo('${widget.index}0', '功能键', 'assets/offered_cursor.png', DraggableType.imageThreeToThree));
       _list.add(DraggableInfo('${widget.index}1', '频道键', 'assets/offered_channel.png', DraggableType.imageOneToTwo));
       _list.add(DraggableInfo('${widget.index}2', '音量键', 'assets/offered_vol.png', DraggableType.imageOneToTwo));

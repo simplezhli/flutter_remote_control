@@ -16,6 +16,8 @@ Android版安装包：[点击下载](https://www.pgyer.com/F65D)，安装密码�
 
 flutter 1.20 在`DragTarget`新增`onAcceptWithDetails`回调，目前对于本项目实现无作用。还是需要去修改源码实现。。。
 
+发现flutter 2.0.0 在`Draggable`新增`onDragUpdate`回调、`DragTarget`新增`onMove`回调，基本可以满足此项目使用，但无法实现二次拖动。还是需要去修改源码实现。。。
+
 修改源码部分有TODO标记，感兴趣可自行查看。
 
 [玩玩Flutter的拖拽——实现一款万能遥控器](https://weilu.blog.csdn.net/article/details/105237677)

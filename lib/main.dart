@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_remote_control/widgets/remote_control.dart';
@@ -11,7 +12,7 @@ import 'widgets/draggable_button_menu.dart';
 void main() {
   runApp(MyApp());
   // 透明状态栏
-  if (Platform.isAndroid) {
+  if (!kIsWeb && Platform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }

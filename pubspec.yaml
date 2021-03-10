@@ -14,8 +14,8 @@ dependencies:
     sdk: flutter
 
   flutter_swiper: ^1.1.6
-  # 振动 https://github.com/rodydavis/flutter_vibrate
-  flutter_vibrate: 1.0.0
+  # 振动（支持Web） https://github.com/benjamindean/flutter_vibration
+  vibration: ^1.7.3
   # 绘制虚线 https://github.com/dnfield/flutter_path_drawing
   path_drawing: ^0.4.1+1
 

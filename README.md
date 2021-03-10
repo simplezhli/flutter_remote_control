@@ -10,8 +10,6 @@ Android 原生实现版本：[RemoteControlView](https://github.com/simplezhli/R
 | :---------------------------: | :-----------------------------: |
 | ![Preview](./preview/preview.gif)    |  ![Preview1](./preview/preview1.gif)    |
 
-Android版安装包：[点击下载](https://www.pgyer.com/F65D)，安装密码：`111111`。
-
 ## 实现过程
 
 flutter 1.20 在`DragTarget`新增`onAcceptWithDetails`回调，目前对于本项目实现无作用。还是需要去修改源码实现。。。

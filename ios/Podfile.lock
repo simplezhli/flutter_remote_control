@@ -1,22 +1,22 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_vibrate (0.0.1):
+  - vibration (1.7.3):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_vibrate (from `.symlinks/plugins/flutter_vibrate/ios`)
+  - vibration (from `.symlinks/plugins/vibration/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_vibrate:
-    :path: ".symlinks/plugins/flutter_vibrate/ios"
+  vibration:
+    :path: ".symlinks/plugins/vibration/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_vibrate: c0ca4ac994ff97c3f147f69865458bbc0cc3508b
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  vibration: b5a33e764c3f609a975b9dca73dce20fdde627dc
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

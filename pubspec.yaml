@@ -7,17 +7,18 @@ homepage: https://github.com/simplezhli/flutter_remote_control
 
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  flutter_swiper: ^1.1.6
+  flutter_swiper_null_safety: ^1.0.2
   # 振动（支持Web） https://github.com/benjamindean/flutter_vibration
-  vibration: ^1.7.3
+  vibration: ^1.7.4-nullsafety.0
   # 绘制虚线 https://github.com/dnfield/flutter_path_drawing
-  path_drawing: ^0.4.1+1
+  path_drawing: ^0.5.1
 
 dev_dependencies:
   flutter_test:

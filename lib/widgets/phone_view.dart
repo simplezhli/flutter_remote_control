@@ -11,14 +11,14 @@ class PhoneView extends CustomPainter {
   final int widthCount = 4;
   final int heightCount = 7;
 
-  Paint _mPhonePaint;
-  RRect _rRect;
+  late Paint _mPhonePaint;
+  late RRect _rRect;
   // 三角
-  Path _path;
+  late Path _path;
   // 网格实线
-  Path _solidPath;
+  late Path _solidPath;
   // 网格虚线
-  Path _dashPath;
+  late Path _dashPath;
 
   PhoneView() {
     _mPhonePaint = Paint();

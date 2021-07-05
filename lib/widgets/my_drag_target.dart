@@ -101,9 +101,9 @@ class MyDraggable<T> extends StatefulWidget {
   /// The [child] and [feedback] arguments must not be null. If
   /// [maxSimultaneousDrags] is non-null, it must be non-negative.
   const MyDraggable({
-    Key key,
-    @required this.child,
-    @required this.feedback,
+    Key? key,
+    required this.child,
+    required this.feedback,
     this.data,
     this.axis,
     this.childWhenDragging,

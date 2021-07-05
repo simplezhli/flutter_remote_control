@@ -10,9 +10,9 @@ import 'package:flutter_remote_control/widgets/my_button.dart';
 class PanelView extends StatefulWidget {
 
   const PanelView({
-    Key key,
-    @required this.dropShadowData,
-    @required this.gridSize,
+    Key? key,
+    required this.dropShadowData,
+    required this.gridSize,
   }): super(key: key);
   
   final List<DraggableInfo> dropShadowData;
@@ -149,9 +149,9 @@ class PanelViewState extends State<PanelView> {
       height = widget.gridSize * 3;
     }
     
-    RenderBox box = context.findRenderObject();
+    RenderBox? box = context.findRenderObject() as RenderBox?;
     // 将全局坐标转换为当前Widget的本地坐标。
-    Offset center = box.globalToLocal(Offset(info.dx, info.dy));
+    Offset center = box!.globalToLocal(Offset(info.dx, info.dy));
     return Rect.fromCenter(
       center: center,
       width: width,

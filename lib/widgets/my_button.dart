@@ -7,11 +7,11 @@ import 'package:flutter_remote_control/models/draggable_type.dart';
 class MyButton extends StatelessWidget {
 
   const MyButton({
-    Key key,
-    @required this.data,
-    this.width1,
-    this.width2,
-    this.width3,
+    Key? key,
+    required this.data,
+    required this.width1,
+    required this.width2,
+    required this.width3,
     this.fontSize,
   }): super(key: key);
 
@@ -19,7 +19,7 @@ class MyButton extends StatelessWidget {
   final double width1;
   final double width2;
   final double width3;
-  final double fontSize;
+  final double? fontSize;
   
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MyButton extends StatelessWidget {
   }
   
   double getWidth(DraggableType type) {
-    double width;
+    double width = 0;
     if (type == DraggableType.text || data.type == DraggableType.imageOneToOne) {
       width = width1;
     }
@@ -58,7 +58,7 @@ class MyButton extends StatelessWidget {
   }
 
   double getHeight(DraggableType type) {
-    double height;
+    double height = 0;
     if (type == DraggableType.text || data.type == DraggableType.imageOneToOne) {
       height = width1;
     }

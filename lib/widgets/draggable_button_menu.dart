@@ -9,8 +9,8 @@ import 'draggable_button.dart';
 class DraggableButtonMenu extends StatefulWidget {
   
   const DraggableButtonMenu({
-    Key key,
-    this.index
+    Key? key,
+    required this.index
   }): super(key: key);
   
   final int index;
@@ -39,7 +39,7 @@ class _DraggableButtonMenuState extends State<DraggableButtonMenu> {
     '向后快进', '高度键', '宽度键'
   ];
 
-  List<DraggableInfo> _list;
+  late List<DraggableInfo> _list;
 
   @override
   void initState() {

@@ -15,7 +15,7 @@ class PanelView extends StatefulWidget {
     required this.gridSize,
   }): super(key: key);
   
-  final List<DraggableInfo> dropShadowData;
+  final List<DraggableInfo?> dropShadowData;
   final double gridSize;
 
   @override
@@ -33,7 +33,7 @@ class PanelViewState extends State<PanelView> {
     }
   }
 
-  removeData(DraggableInfo info) {
+  removeData(DraggableInfo? info) {
     data.remove(info);
   }
   
@@ -105,8 +105,8 @@ class PanelViewState extends State<PanelView> {
 
     /// 引导指示按钮（投影）
     List<Widget> children1 = List.generate(widget.dropShadowData.length, (index) {
-      Rect rect = computeSize(context, widget.dropShadowData[index]);
-      rect = adjustPosition(widget.dropShadowData[index], rect);
+      Rect rect = computeSize(context, widget.dropShadowData[index]!);
+      rect = adjustPosition(widget.dropShadowData[index]!, rect);
 
       bool overlap = isOverlap(rect, rectList);
       
@@ -115,7 +115,7 @@ class PanelViewState extends State<PanelView> {
       }
       
       var button = MyButton(
-          data: widget.dropShadowData[index],
+          data: widget.dropShadowData[index]!,
           fontSize: 13.0,
           width1: widget.gridSize - 18, // padding 9
           width2: widget.gridSize - 18, // padding 9

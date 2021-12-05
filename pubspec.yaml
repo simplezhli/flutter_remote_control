@@ -17,7 +17,7 @@ dependencies:
   # 振动（支持Web） https://github.com/benjamindean/flutter_vibration
   vibration: ^1.7.4-nullsafety.0
   # 绘制虚线 https://github.com/dnfield/flutter_path_drawing
-  path_drawing: ^0.5.1
+  path_drawing: ^1.0.0
 
 dev_dependencies:
   flutter_test:

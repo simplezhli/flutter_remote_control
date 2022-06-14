@@ -21,7 +21,7 @@ class _RemoteControlState extends State<RemoteControl> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((callback) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
       RenderBox? hint = _key.currentContext!.findRenderObject() as RenderBox?;
       double width = hint!.size.width;
       double height = hint.size.height;

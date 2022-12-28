@@ -19,6 +19,8 @@ dependencies:
   vibration_web: 1.6.5
   # 绘制虚线 https://github.com/dnfield/flutter_path_drawing
   path_drawing: ^1.0.1
+  # 用来替代dart:html，便于导包 https://github.com/dint-dev/universal_html
+  universal_html: ^2.0.8
 
 dev_dependencies:
   flutter_test:

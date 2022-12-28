@@ -1,11 +1,13 @@
 
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_remote_control/models/draggable_info_model.dart';
 import 'package:flutter_remote_control/utils/utils.dart';
 import 'package:flutter_remote_control/widgets/my_drag_target.dart';
 import 'package:flutter_remote_control/widgets/panel_view.dart';
 import 'package:flutter_remote_control/widgets/phone_view.dart';
+import 'package:universal_html/html.dart';
+
 
 class RemoteControl extends StatefulWidget {
   @override
@@ -22,20 +24,31 @@ class _RemoteControlState extends State<RemoteControl> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((callback) {
-      RenderBox? hint = _key.currentContext!.findRenderObject() as RenderBox?;
-      double width = hint!.size.width;
-      double height = hint.size.height;
-      Size size = Utils.getPhoneContentSize(height);
-      
-      _rect = Rect.fromCenter(
-          center: Offset(width / 2, height / 2),
-          width: size.width,
-          height: size.height
-      );
+      _refreshRect();
       setState(() {
         
       });
     });
+
+    if (kIsWeb) {
+      window.onResize.listen((event) {
+        _refreshRect();
+      });
+    }
+
+  }
+
+  void _refreshRect() {
+    RenderBox? hint = _key.currentContext!.findRenderObject() as RenderBox?;
+    double width = hint!.size.width;
+    double height = hint.size.height;
+    Size size = Utils.getPhoneContentSize(height);
+
+    _rect = Rect.fromCenter(
+        center: Offset(width / 2, height / 2),
+        width: size.width,
+        height: size.height
+    );
   }
 
   @override
